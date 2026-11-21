@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this witness or its verifiers, please cite the archived note."
+title: "A two-shift bound for the least quadratic nonresidue"
+type: software
+version: "v1.0"
+date-released: "2026-11-20"
+doi: "10.5281/zenodo.24408857"
+license: MIT
+repository-code: "https://github.com/novalis78/least-nonresidue-two-shift"
+authors:
+  - family-names: Lopin
+    given-names: Lennart
+    orcid: "https://orcid.org/0009-0001-2751-2060"
+    affiliation: "Euler's Identity LLC"
+references:
+  - type: article
+    title: "Fourier optimization, the least quadratic non-residue, and the least prime in an arithmetic progression"
+    authors:
+      - family-names: Carneiro
+        given-names: Emanuel
+      - family-names: Milinovich
+        given-names: Micah B.
+      - family-names: Quesada-Herrera
+        given-names: Emily
+      - family-names: Ramos
+        given-names: Antonio Pedro
+    journal: "Mathematics of Computation"
+    doi: "10.1090/mcom/4154"

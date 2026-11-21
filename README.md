@@ -2,7 +2,7 @@
 
 Lennart Lopin (Euler's Identity LLC, ORCID [0009-0001-2751-2060](https://orcid.org/0009-0001-2751-2060))
 
-Archived version: Zenodo DOI to follow.
+Archived version: [doi:10.5281/zenodo.24408857](https://doi.org/10.5281/zenodo.24408857)
 
 For an odd prime $p$, let $n_p$ be its least positive quadratic nonresidue.
 The explicit function below gives $\mathcal C(1)^{-2}<0.76079030$. Theorem 1 of
