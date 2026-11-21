@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this witness or its verifiers, please cite the archived note."
-title: "A two-shift bound for the least quadratic nonresidue"
+title: "Certified Fourier bounds for the least quadratic nonresidue"
 type: software
 version: "v1.0"
 date-released: "2026-11-20"

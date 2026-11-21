@@ -1,0 +1,332 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,hyperref}
+\hypersetup{hidelinks,pdftitle={Certified Fourier bounds for the least quadratic nonresidue}}
+\newcommand{\paperAuthor}{Lennart Lopin\\ {\normalsize Euler's Identity LLC}\\ {\normalsize ORCID: \href{https://orcid.org/0009-0001-2751-2060}{0009-0001-2751-2060}}}
+% Enter the public release DOI URL or a permanent repository/commit URL here.
+% Filling this one field enables the in-text software citation and bibliography item.
+\newcommand*{\replicationURL}{https://doi.org/10.5281/zenodo.24408857}
+\newcommand*{\ifReplicationURL}[1]{\ifx\replicationURL\empty\else#1\fi}
+\title{Certified Fourier bounds for the least quadratic nonresidue}
+\author{\paperAuthor}
+\date{November 20, 2026}
+\newcommand{\CC}{\mathcal C(1)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ii}{\mathrm i}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give two explicit Fourier test functions for the extremal constant
+$\mathcal C(1)$ of Carneiro, Milinovich, Quesada-Herrera and Ramos. A
+single-shift function with 36 rational coefficients certifies
+$\mathcal C(1)^{-2}<0.760777412$. A two-shift function with 24 rational
+coefficients certifies $\mathcal C(1)^{-2}<0.76079030$. Their published
+upper bound is $0.7615$. At least two separately written interval
+computations check each witness. Under the generalized Riemann
+hypothesis for Dirichlet $L$-functions, their Theorems 1 and 2 give the
+bound $0.760777412$ for the limiting ratios of the least quadratic
+nonresidue and the least prime quadratic residue to $(\log p)^2$.
+The Fourier inequalities themselves are unconditional.
+\end{abstract}
+
+\section{The bounds and their consequences}
+For an odd prime $p$, let $n_p$ be the least positive quadratic nonresidue
+modulo $p$ and $r_p$ the least prime that is a nonzero quadratic residue
+modulo $p$. Write $\widehat F(t)=\int_{\RR} F(x)e^{-2\pi\ii xt}\,dx$. For
+nonzero $F\in L^1(\RR)$ with real-valued transform, define $D=\|F\|_1$ and
+\[
+ N=2\pi\left(\int_{-\infty}^0 \widehat F(t)e^{\pi t}\,dt
+                 -\int_0^\infty |\widehat F(t)|e^{\pi t}\,dt\right).
+\]
+The supremum of $N/D$ is $\CC$ in \cite[(1.1)]{cmqr}. Each admissible
+witness with $N>0$ therefore gives $\CC^{-2}\le(D/N)^2$.
+
+\medskip\noindent
+\textbf{Proposition.} The two-shift function of Section 2 satisfies
+$(D/N)^2<0.76079030$, and the single-shift function of Section 3
+satisfies $(D/N)^2<0.760777412$. Consequently, assuming Dirichlet GRH,
+\[
+ \max\!\left\{\limsup_{p\to\infty}\frac{n_p}{(\log p)^2},
+               \limsup_{p\to\infty}\frac{r_p}{(\log p)^2}\right\}
+ \le \CC^{-2}<0.760777412 ,
+\]
+where $p$ runs over primes. The first inequality is precisely the joint
+consequence of Theorems 1 and 2 of \cite{cmqr}. The improvement is in the
+coefficient of $(\log p)^2$.
+
+Equivalently, $\CC>1.1464924$, compared with $\CC>1.14600$ in
+\cite[Theorem 5]{cmqr}. The same theorem gives $\CC<1.14731$, so
+$\CC^{-2}>0.7596$ and the method cannot go below that value. The
+single-shift witness removes about $37.6\%$ of the interval for $\CC^{-2}$
+left open by \cite[Theorem 5]{cmqr}, and the two-shift witness alone
+removes about $36.9\%$. The two witnesses belong to different families.
+
+Alp\"oge's announcement of a Lean formalization covering Dirichlet
+GRH~\cite{alpoge} motivated the search for these witnesses. Sutherland reports
+independent checks of the formal statements~\cite{sutherland}. Taking the
+Dirichlet GRH result as established discharges the hypothesis of both
+arithmetic corollaries above.
+
+\newpage
+\section{A two-shift witness}
+Take $a=0.246$, $c_1=0.85$, $c_2=0$, and use the integers in Table 1 to
+define $b_{jn}=B_{jn}/10^7$. Put
+\[
+ P_j(u)=\sum_{n=1}^{12} b_{jn}\frac{u^{2n-1}}{(2n-1)!},\qquad
+ u_j=\frac{c_j-\pi t}{a},\qquad
+ \widehat F(t)=\sum_{j:\,u_j\ge0}e^{-u_j}P_j(u_j).
+\]
+Fourier inversion and the gamma integral give
+\[
+ F(x)=\frac a\pi\sum_{j,n} b_{jn} e^{2\ii c_jx}(1+2\ii ax)^{-2n}.
+\]
+Thus $F\in L^1$, and its Fourier transform is real and continuous. The
+two translations allow the shape on negative frequencies to change while
+only the first component reaches positive frequencies.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{r rr@{\qquad}r rr}
+\toprule
+$n$ & $B_{1n}$ & $B_{2n}$ & $n$ & $B_{1n}$ & $B_{2n}$ \\
+\midrule
+1 & 1295 & 0 & 7 & -46679113 & -118505260 \\
+2 & 79929 & -9074 & 8 & 20002165 & 154829818 \\
+3 & -6609595 & 5043626 & 9 & -2996805 & -138162493 \\
+4 & 117992958 & -14383101 & 10 & -22963877 & 320107061 \\
+5 & -234402020 & -118792841 & 11 & 279853645 & 234086697 \\
+6 & 332397224 & 61384470 & 12 & -809901785 & 62986550 \\
+\bottomrule
+\end{tabular}
+\caption{Two-shift witness: exact integer coefficients in ascending odd powers.}
+\end{table}
+
+\paragraph{Numerator.} Set $w=\pi t$ and $\lambda=1+a$. Integrating the
+signed transform over all $w$ and subtracting twice its positive part on
+$w>0$ yields
+\[
+ N=2a\sum_{j,n}\frac{e^{c_j}b_{jn}}{(1+a)^{2n}}
+       -4ae^{c_1}\int_0^{c_1/a}e^{-\lambda u}\max\{P_1(u),0\}\,du .
+\]
+Here $\int_0^\infty e^{-\lambda u}u^{2n-1}/(2n-1)!\,du=\lambda^{-2n}$.
+
+\paragraph{Norm.} After removing a common phase, let $z=2ax$,
+$\omega_j=(c_j-c_1)/a$, and put
+\[
+ H(z)=\sum_{j,n} b_{jn} e^{\ii\omega_j z}(1+\ii z)^{-2n},\qquad
+ D=\frac1\pi\int_0^\infty |H(z)|\,dz .
+\]
+The factor $1/\pi$ uses $H(-z)=\overline{H(z)}$ for real $z$. For $R>0$,
+the triangle inequality and $|1+\ii z|\ge z$ for $z>0$ give
+\begin{equation}
+ \int_R^\infty |H(z)|\,dz
+ \le\sum_{j,n}\frac{|b_{jn}|}{(2n-1)R^{2n-1}} . \label{eq:tail}
+\end{equation}
+
+\newpage
+\section{A single-shift witness with 36 coefficients}
+In this section take $a=3/10$ and $c=4/5$, and let
+$S(z)=\sum_{j=0}^{35}r_jz^j$ with $r_j=q_j/10^6$ and the integers $q_j$
+of Table 2. (The verifiers call this polynomial $R$.) Define $d_k$ and
+$P$ by
+\[
+ S(2w-1)=\sum_{k=1}^{36}d_k w^{k-1},
+ \qquad P(u)=\sum_{k=1}^{36}d_k\,\frac{u^k}{k!}.
+\]
+Take $\widehat F(t)=\mathbf 1_{\{u\ge0\}}e^{-u}P(u)$, where
+$u=(c-\pi t)/a$. This transform is real, continuous at the cutoff because
+$P(0)=0$, and integrable. Substitution into the inverse Fourier integral
+gives
+\[
+ F(x)=\frac a\pi e^{2\ii cx}\sum_{k=1}^{36}
+      \frac{d_k}{k!}\int_0^\infty e^{-(1+2\ii ax)u}u^k\,du
+     =\frac a\pi e^{2\ii cx}\sum_{k=1}^{36}\frac{d_k}{(1+2\ii ax)^{k+1}}.
+\]
+Thus $F(x)=O((1+|x|)^{-2})$, Fourier inversion recovers the prescribed
+continuous transform, and $S\ne0$ ensures $F\ne0$.
+
+\begin{table}[h]
+\centering
+\setlength{\tabcolsep}{8pt}
+\begin{tabular}{@{}rr@{\qquad}rr@{\qquad}rr@{\qquad}rr@{}}
+\toprule
+$j$&$q_j$&$j$&$q_j$&$j$&$q_j$&$j$&$q_j$\\
+\midrule
+0 & 1000000 &  9 & 510409 & 18 & 6332    & 27 & $-1653$\\
+1 & 4815715 & 10 & 258500 & 19 & 5339    & 28 & 1541\\
+2 & 8710552 & 11 & 235574 & 20 & $-4625$ & 29 & $-1050$\\
+3 & 7617483 & 12 & 72629  & 21 & 6832    & 30 & 1019\\
+4 & 4487466 & 13 & 71024  & 22 & $-4287$ & 31 & $-464$\\
+5 & 3434816 & 14 & 46027  & 23 & 2822    & 32 & 1320\\
+6 & 2345152 & 15 & 3286   & 24 & $-479$  & 33 & 215\\
+7 & 1189056 & 16 & 28100  & 25 & $-732$  & 34 & 2070\\
+8 & 938349  & 17 & $-2855$ & 26 & 1601   & 35 & 5064\\
+\bottomrule
+\end{tabular}
+\caption{Single-shift witness: $r_j=q_j/10^6$ is the coefficient of $z^j$ in $S(z)$.}
+\end{table}
+
+\paragraph{Norm.} By evenness of $|F|$, put $\theta=\arctan(2ax)$ for
+$x\ge0$. Writing $w=(1+\ii\tan\theta)^{-1}=\cos\theta\,e^{-\ii\theta}$ gives
+$2w-1=e^{-2\ii\theta}$. The factor $w^2$ in the sum for $F$ has modulus
+$\cos^2\theta$, which cancels the $\sec^2\theta$ in $2a\,dx$. Hence
+\begin{equation}
+ D_*:=\pi\|F\|_1=\int_0^{\pi/2}|S(e^{-2\ii\theta})|\,d\theta. \label{eq:normS}
+\end{equation}
+
+\paragraph{Numerator.} Put $h=1+a=13/10$ and $m=c/a=8/3$. Here $t<0$
+corresponds to $u>m$, and $0<t<c/\pi$ corresponds to $0<u<m$. Using
+$e^{\pi t}=e^{c-au}$, the quantity $N_*:=\pi N$ satisfies
+\begin{equation}
+ N_*=2\pi a e^c\left(\int_m^\infty e^{-hu}P(u)\,du-
+                    \int_0^m e^{-hu}|P(u)|\,du\right), \label{eq:numS}
+\end{equation}
+and $N/D=N_*/D_*$. For $v\ge0$, repeated integration by parts gives
+\[
+ T(v)=\int_v^\infty e^{-hu}P(u)\,du
+     =e^{-hv}\sum_{j=0}^{36}\frac{v^j}{j!}
+                    \sum_{k=j}^{36}\frac{d_k}{h^{k-j+1}},
+ \qquad d_0=0.
+\]
+Exact rational real-root isolation shows that $P$ has a simple root at
+zero and exactly two simple roots in $(0,m)$,
+\[
+ 0.31184795095143<v_1<0.31184795095144,\qquad
+ 1.05793812431641<v_2<1.05793812431642,
+\]
+rounded outward for display. With $v_0=0$ and $v_3=m$, $P$ has constant
+sign on each $(v_j,v_{j+1})$. The second integral in \eqref{eq:numS} is
+therefore exactly $\sum_{j=0}^{2}|T(v_j)-T(v_{j+1})|$.
+
+\section{Computational certificates}
+
+\subsection*{Two-shift witness}
+Three verifiers use the exact decimals in \texttt{witness.json} and
+the transform identities in Section 2, and bound the tail by
+\eqref{eq:tail}. They use different finite integration routines.
+
+\paragraph{Complex ball quadrature.}
+The Python-FLINT verifier uses Arb at 128-bit precision on finite panels.
+For $\epsilon=10^{-12}$, it bounds $2\max(y,0)$ by
+$y+\sqrt{y^2+\epsilon^2}$ in the numerator correction. For the norm it
+integrates $\sqrt{H(z)H(-z)+\epsilon^2}$, an upper bound on the real
+axis. Both square roots use Arb's analyticity check on complex boxes.
+The resulting outward-rounded inequalities are
+\[
+ N>0.9177970191817,\qquad D<0.8005327903879 .
+\]
+These imply $(D/N)^2<0.76079030$.
+
+\paragraph{Trapezoid check.}
+The mpmath verifier encloses endpoint values at 35 decimal digits. On a
+panel of length $h$, linear interpolation of a real or complex $g$ has
+pointwise error at position $s$ at most $s(h-s)\sup|g''|/2$.
+Convexity and the Lipschitz constant 1 of modulus and positive part
+therefore give a trapezoid upper bound with additive error
+$h^3\sup|g''|/12$, even on panels containing a zero. The code bounds
+the derivatives term by term. This check gives $(D/N)^2<0.760799446$.
+
+\paragraph{Simpson check.}
+A third verifier shares no code with the first two. It isolates the two
+sign changes of $P_1$ on $(0,c_1/a)$ by exact rational root isolation and
+integrates the positive part in closed form. For the norm it applies
+adaptive Simpson panels on $[0,96]$, bounding the fourth derivative of
+$|H|$ on each panel by Taylor-ball arithmetic at 150 bits, and uses
+\eqref{eq:tail} with $R=96$. This check gives $(D/N)^2<0.760790289$.
+
+\paragraph{Lean verification.}
+The accompanying Lean 4 file proves the infinite-tail estimate
+\eqref{eq:tail} for finite sums of the indicated type, checks that its right side at $R=64$
+is below $0.000002035$ for Table 1, and proves the final
+ratio inequality assuming the stated numerical enclosures for $N$ and $D$.
+It compiles with Lean and Mathlib v4.24.0 with warnings treated as errors,
+and these declarations depend only on the axioms \texttt{propext},
+\texttt{Classical.choice} and \texttt{Quot.sound}.
+The Python interval verifiers supply the enclosures.
+
+\subsection*{Single-shift witness}
+Both verifiers form the rational polynomials exactly, isolate the roots
+of $P$ with SymPy, and evaluate the numerator through $T(v)$.
+
+\paragraph{Trapezoid with an exact derivative bound.}
+Let $f(\theta)=S(e^{-2\ii\theta})$, $L=\pi/2$, $n=32768$ and $b=L/n$.
+Differentiating the trigonometric polynomial twice gives
+$\sup|f''|\le K=4\sum_{j=0}^{35} j^2|r_j|=126726777/50000$. The panel
+argument of the trapezoid check above, applied to $f$ before taking the
+modulus, gives
+\begin{equation}
+ D_*\le B_n+\frac{KLb^2}{12},\qquad
+ B_n=b\left(\frac{|f(0)|+|f(L)|}{2}+\sum_{j=1}^{n-1}|f(jb)|\right).
+ \label{eq:trapS}
+\end{equation}
+With 200-bit Arb balls the verifier obtains, rounded outward,
+\[
+ N_*>16.68808877572884,\qquad
+ B_n<14.55577666588763,\qquad
+ \frac{KLb^2}{12}<0.000000762389490,
+\]
+so $D_*<14.55577742827712$ and $(D/N)^2=(D_*/N_*)^2<0.760777411894$.
+This proves the proposition.
+
+\paragraph{Cauchy--Schwarz check.}
+The second verifier writes $D_*=\frac12\int_0^\pi|S(e^{\ii\phi})|\,d\phi$
+and splits $[0,\pi]$ into 2048 panels $I$. On each panel
+$\int_I|S|\le |I|\,(|I|^{-1}\int_I|S|^2)^{1/2}$, and the mean of
+$|S|^2$ is a finite trigonometric sum computed exactly from the
+autocorrelations of the coefficients. With mpmath interval arithmetic
+at 65 digits this gives $(D/N)^2<0.760777857$.
+
+\subsection*{Floating-point cross-checks}
+The interval verifiers rely on the reductions in Sections 2 and 3. As a
+check on those reductions, a separate floating-point evaluation of the
+quotient in \cite[(1.1)]{cmqr} works directly in the variables $t$ and $x$. It compares the closed
+form of $F$ with numerical Fourier inversion of $\widehat F$, integrates
+$|\widehat F|e^{\pi t}$ between its sign changes and integrates $|F|$ over
+the real line. It gives $(D/N)^2\approx0.7607902846$ for the two-shift
+witness and $(D/N)^2\approx0.7607773322$ for the single-shift witness,
+consistent with the certified upper bounds. These checks are not proofs.
+
+\paragraph{Reproduction and provenance.}
+Each of the following commands, run in the archive directory, checks one
+of the witnesses:
+\begin{itemize}
+\item \texttt{python3 verify\_single\_shift\_36\_arb.py} (python-flint 0.9.0, SymPy 1.14.0);
+\item \texttt{python3 verify\_single\_shift\_36\_cauchy.py} (mpmath 1.3.0, SymPy 1.14.0);
+\item \texttt{python3 check\_arb.py witness.json} (python-flint 0.9.0);
+\item \texttt{python3 certify.py witness.json} (mpmath 1.3.0);
+\item \texttt{python3 verify\_two\_shift\_simpson.py witness.json}\newline
+      (python-flint 0.9.0 and SymPy 1.14.0).
+\end{itemize}
+The companion archive includes the inputs, these verifiers, the
+floating-point cross-checks, the optimization code and the Lean
+source\ifReplicationURL{~\cite{replication}}. The two-shift witness was
+found by optimizing two translated copies of the test-function basis
+of \cite[\S6]{cmqr}. The single-shift witness was found by enlarging a
+24-coefficient numerical trial to 36 coefficients at a fixed shift and
+dilation and rounding to denominator $10^6$. OpenAI Codex assisted with
+the numerical searches, verification code and preparation of this note.
+Anthropic's Claude independently reran all verifiers and the Lean check
+before deposit.
+
+\begin{thebibliography}{1}
+\bibitem{cmqr} E. Carneiro, M. B. Milinovich, E. Quesada-Herrera and
+A. P. Ramos, \emph{Fourier optimization, the least quadratic non-residue,
+and the least prime in an arithmetic progression}, Mathematics of
+Computation, \href{https://doi.org/10.1090/mcom/4154}{doi:10.1090/mcom/4154}.
+\href{https://arxiv.org/abs/2404.08380}{arXiv:2404.08380}.
+\bibitem{alpoge} L.~Alp\"oge, [Announcement of a Lean formalization of the
+Riemann hypothesis], November 20, 2026.
+\url{https://alpo.ge/remark.pdf}.
+
+\bibitem{sutherland} A.~V.~Sutherland, \emph{Verification files for the
+Lean proof of the Riemann Hypothesis}, MIT, November 20, 2026.
+\url{https://math.mit.edu/~drew/grh/}.
+
+\ifReplicationURL{\bibitem{replication} \emph{Replication materials for
+Certified Fourier bounds for the least quadratic nonresidue}. Exact
+coefficients, verification code, and Lean source.
+\expandafter\url\expandafter{\replicationURL}. Source repository:
+\url{https://github.com/novalis78/least-nonresidue-two-shift}.}
+\end{thebibliography}
+\end{document}
