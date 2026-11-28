@@ -3,6 +3,7 @@
 Lennart Lopin (Euler's Identity LLC, ORCID [0009-0001-2751-2060](https://orcid.org/0009-0001-2751-2060))
 
 Archived version: [doi:10.5281/zenodo.24408857](https://doi.org/10.5281/zenodo.24408857)
+Where the problem stands, and the open record for $\mathcal C(1)$ (send a better witness; an exact checker answers): [isitsolved.com/least-quadratic-nonresidue](https://isitsolved.com/least-quadratic-nonresidue) · [the C(1) ladder](https://isitsolved.com/ladders/c1)
 Note: [`fourier-bounds-note.pdf`](fourier-bounds-note.pdf) (source `fourier-bounds-note.tex`)
 
 For an odd prime $p$, let $n_p$ be its least positive quadratic nonresidue
